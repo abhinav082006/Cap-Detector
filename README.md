@@ -60,9 +60,9 @@ npm install
 Open the `.env` file and fill in your API keys:
 
 ```env
-TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN=your_auth_token_here
-GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN
+GEMINI_API_KEY
 PORT=3000
 ```
 
@@ -133,7 +133,7 @@ Send any WhatsApp message to your Twilio Sandbox number:
 
 ```
 whatsapp chatbot/
-├── .env                # API keys (never commit this!)
+├── .env                # API keys 
 ├── .gitignore          # Ignores node_modules and .env
 ├── package.json        # Dependencies
 ├── server.js           # Express app + Twilio webhook

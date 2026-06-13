@@ -1,175 +1,322 @@
-# 🔍 WhatsApp Fake News Detector Bot
+# 🔍 CapDetector — AI-Powered WhatsApp Fact Checker
 
-A WhatsApp chatbot that fact-checks forwarded messages using **Twilio WhatsApp API** and **Google Gemini AI**. Forward any suspicious message and get an instant verdict.
+CapDetector is a WhatsApp chatbot that helps users identify potential misinformation using **Google Gemini AI** and the **Twilio WhatsApp API**.
+
+Simply forward a suspicious message, image, or voice note, and CapDetector analyzes the content and provides an easy-to-understand verdict along with supporting reasoning and safety guidance.
+
+---
+
+## 🎥 Demo Video
+
+See CapDetector in action:
+
+**▶️ Demo:** *(Add your YouTube/GitHub video link here)*
+
+### What the demo covers
+
+* ✅ Fact-checking forwarded text messages
+* 📸 Analyzing screenshots and images
+* 🎙️ Processing voice messages
+* 🚩 Detecting misinformation red flags
+* 📊 Generating verdicts with confidence scores
+
+> **Beta Notice:** CapDetector currently uses the free tier of Google Gemini APIs. Occasionally, requests may be delayed or fail due to API rate limits or temporary server overload on Google's side. If that happens, simply resend the message after a few minutes.
+
+---
+
+## ✨ Features
+
+* 🤖 AI-powered fact-checking using Google Gemini
+* 📸 Image and screenshot analysis
+* 🎙️ Voice message support
+* 📊 Confidence-based verdicts
+* 🚩 Misinformation red-flag detection
+* 💡 Safety recommendations for users
+* 🌐 Multilingual support (Beta)
+* ⚡ Real-time WhatsApp integration
+
+---
 
 ## 📋 What It Returns
 
-For every forwarded message, the bot replies with:
+For every forwarded message, image, or voice note, the bot replies with:
 
-| Field | Example |
-|---|---|
-| **Verdict** | `FAKE` / `REAL` / `UNVERIFIABLE` |
-| **Confidence** | `92%` |
-| **Reason** | Short explanation of the verdict |
-| **Red Flags** | List of suspicious elements found |
-| **Safety Tip** | Actionable advice for the user |
+| Field          | Example                           |
+| -------------- | --------------------------------- |
+| **Verdict**    | `FAKE` / `REAL` / `UNVERIFIABLE`  |
+| **Confidence** | `92%`                             |
+| **Reason**     | Short explanation of the verdict  |
+| **Red Flags**  | List of suspicious elements found |
+| **Safety Tip** | Actionable advice for the user    |
 
-**Example reply:**
-```
-🔍 *FAKE NEWS DETECTOR*
+### Example Reply
 
-🚨 *Verdict:* FAKE
-📊 *Confidence:* 91%
+```text
+🔍 CAPDETECTOR
 
-📝 *Reason:*
+🚨 Verdict: FAKE
+📊 Confidence: 91%
+
+📝 Reason:
 This claim has been repeatedly debunked by WHO and health authorities worldwide.
 The message uses classic fear-mongering language to pressure sharing.
 
-🚩 *Red Flags:*
-  • No credible source cited
-  • Uses emotional manipulation ("SHARE BEFORE DELETED")
-  • Contains fabricated statistics
-  • Anonymous attribution ("doctors say...")
+🚩 Red Flags:
+• No credible source cited
+• Uses emotional manipulation ("SHARE BEFORE DELETED")
+• Contains fabricated statistics
+• Anonymous attribution ("doctors say...")
 
-💡 *Safety Tip:*
+💡 Safety Tip:
 Always verify health claims on official WHO or government health websites before forwarding.
 ```
 
 ---
 
-## 🛠️ Prerequisites
+## 🛠️ Tech Stack
 
-- **Node.js** v18 or higher
-- **Twilio account** — [Sign up free](https://www.twilio.com/try-twilio)
-- **Google Gemini API key** — [Get one here](https://aistudio.google.com/app/apikey)
-- **ngrok** (for local development) — [Download](https://ngrok.com/download)
+* Node.js
+* Express.js
+* Google Gemini AI
+* Twilio WhatsApp API
+* Render
+* ngrok (Local Development)
+
+---
+
+## 📦 Prerequisites
+
+Before running the project, ensure you have:
+
+* Node.js v18 or higher
+* Twilio Account
+* Google Gemini API Key
+* ngrok (for local development)
 
 ---
 
 ## ⚡ Setup
 
-### 1. Install Dependencies
+### 1. Clone the Repository
 
 ```bash
-cd "whatsapp chatbot"
+git clone https://github.com/yourusername/capdetector.git
+
+cd capdetector
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
 ```
 
-### 2. Configure Environment Variables
+### 3. Configure Environment Variables
 
-Open the `.env` file and fill in your API keys:
+Create a `.env` file:
 
 ```env
-TWILIO_ACCOUNT_SID
-TWILIO_AUTH_TOKEN
-GEMINI_API_KEY
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+GEMINI_API_KEY=
 PORT=3000
 ```
 
-**Where to find these:**
-- `TWILIO_ACCOUNT_SID` & `TWILIO_AUTH_TOKEN` → [Twilio Console](https://console.twilio.com/) → Account Info
-- `GEMINI_API_KEY` → [Google AI Studio](https://aistudio.google.com/app/apikey) → Get API Key
+### 4. Get Required Credentials
 
-### 3. Set Up Twilio WhatsApp Sandbox
+#### Twilio Credentials
 
-1. Go to [Twilio Console](https://console.twilio.com/) → **Messaging → Try it out → Send a WhatsApp message**
-2. Follow the instructions to join the sandbox by sending the code to the Twilio WhatsApp number
-3. Leave the Sandbox settings page open — you'll need it in the next step
+1. Log in to Twilio Console
+2. Navigate to Account Dashboard
+3. Copy:
 
-### 4. Start the Server
+   * Account SID
+   * Auth Token
+
+#### Gemini API Key
+
+1. Open Google AI Studio
+2. Create an API Key
+3. Paste it into `.env`
+
+---
+
+## 📱 Set Up Twilio WhatsApp Sandbox
+
+1. Open Twilio Console
+2. Navigate to:
+
+```text
+Messaging → Try It Out → Send a WhatsApp Message
+```
+
+3. Join the Sandbox by sending the provided code to the Twilio WhatsApp number.
+4. Keep this page open for webhook configuration later.
+
+---
+
+## 🚀 Start the Server
+
+### Production Mode
 
 ```bash
 npm start
 ```
 
-Or with auto-reload during development:
+### Development Mode
 
 ```bash
 npm run dev
 ```
 
-You should see:
-```
-🚀 WhatsApp Fake News Detector is running!
+Expected output:
+
+```text
+🚀 CapDetector is running!
 📡 Listening on port 3000
 🔗 Webhook URL: http://localhost:3000/webhook
 ```
 
-### 5. Expose Your Server with ngrok
+---
 
-In a **new terminal window**:
+## 🌐 Expose the Server with ngrok
+
+Open a new terminal:
 
 ```bash
 ngrok http 3000
 ```
 
-Copy the **Forwarding URL** — it looks like:
-```
-https://a1b2-c3d4-e5f6.ngrok-free.app
+You'll receive a public URL:
+
+```text
+https://abcd-1234.ngrok-free.app
 ```
 
-### 6. Configure Twilio Webhook
+Copy this URL.
 
-1. Go back to the **Twilio WhatsApp Sandbox** settings
-2. In **"When a message comes in"**, paste:
-   ```
-   https://your-ngrok-url.ngrok-free.app/webhook
-   ```
-3. Set method to **HTTP POST**
-4. Click **Save**
+---
+
+## 🔗 Configure Twilio Webhook
+
+In Twilio Sandbox settings:
+
+**When a message comes in**
+
+```text
+https://your-ngrok-url.ngrok-free.app/webhook
+```
+
+Method:
+
+```text
+POST
+```
+
+Click **Save**.
 
 ---
 
 ## 💬 Usage
 
-Send any WhatsApp message to your Twilio Sandbox number:
+After setup:
 
-- **Say `hi` or `hello`** → Get a welcome message explaining how to use the bot
-- **Forward any suspicious message** → Get a full fact-check verdict
+### Greeting
+
+Send:
+
+```text
+hi
+```
+
+or
+
+```text
+hello
+```
+
+CapDetector will respond with usage instructions.
+
+### Fact-Checking
+
+Forward any:
+
+* Text message
+* Screenshot
+* Image
+* Voice note
+
+The bot will analyze the content and return a verdict.
 
 ---
 
 ## 📁 Project Structure
 
-```
-whatsapp chatbot/
-├── .env                # API keys 
-├── .gitignore          # Ignores node_modules and .env
-├── package.json        # Dependencies
-├── server.js           # Express app + Twilio webhook
+```text
+capdetector/
+├── .env
+├── .gitignore
+├── package.json
+├── server.js
 ├── lib/
-│   ├── gemini.js       # Gemini AI fact-checking logic
-│   └── formatter.js    # WhatsApp message formatter
-└── README.md           # This file
+│   ├── gemini.js
+│   └── formatter.js
+├── README.md
 ```
 
 ---
 
-## 🚀 Deploying to Production
+## 🚀 Deployment
 
-For production, deploy to a cloud provider with a stable HTTPS URL:
+Deploy to any cloud platform that provides HTTPS support.
 
-| Platform | Command |
-|---|---|
-| **Railway** | `railway up` |
-| **Render** | Connect GitHub repo → Auto deploy |
-| **Fly.io** | `fly launch` |
-| **Heroku** | `git push heroku main` |
+| Platform | Deployment           |
+| -------- | -------------------- |
+| Railway  | railway up           |
+| Render   | Connect GitHub Repo  |
+| Fly.io   | fly launch           |
+| Heroku   | git push heroku main |
 
-Then update your Twilio Sandbox webhook URL to your production URL.
-
-> **Note:** For production WhatsApp (not Sandbox), you need to apply for a [Twilio WhatsApp Business account](https://www.twilio.com/whatsapp).
+After deployment, update your Twilio webhook URL with your production endpoint.
 
 ---
 
 ## 🔒 Security Notes
 
-- Never commit `.env` to version control — it's in `.gitignore`
-- For production, validate incoming Twilio requests using `twilio.validateRequest()`
-- Rotate your API keys if they are ever accidentally exposed
+* Never commit `.env` files
+* Keep API keys private
+* Rotate keys if exposed
+* Validate incoming Twilio requests in production
+* Enable rate limiting for public deployments
+
+---
+
+## 🧪 Current Limitations
+
+* Uses Gemini free-tier APIs
+* May experience occasional API rate limits
+* Responses depend on AI-generated analysis
+* Regional Indian language support is still under development
+* WhatsApp Sandbox is intended for testing and demonstrations
+
+---
+
+## 🤝 Contributing
+
+Contributions, feature requests, and feedback are welcome.
+
+Feel free to fork the repository, open issues, or submit pull requests.
 
 ---
 
 ## 📜 License
 
-MIT
+MIT License
+
+---
+
+## ⭐ Support the Project
+
+If you found this project useful, consider giving the repository a star.
+
+It helps others discover the project and motivates future improvements.

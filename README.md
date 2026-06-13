@@ -25,6 +25,48 @@ See CapDetector in action:
 > **Beta Notice:** CapDetector currently uses the free tier of Google Gemini APIs. Occasionally, requests may be delayed or fail due to API rate limits or temporary server overload on Google's side. If that happens, simply resend the message after a few minutes.
 
 ---
+## 📲 Try the Live Demo
+
+Want to test CapDetector without setting it up locally?
+
+### WhatsApp Sandbox Access
+
+**WhatsApp Number:**
++1 (415) 523-8886
+
+**Join Code:**
+
+```text
+Join state-simply
+```
+
+### How to Use
+
+1. Save the WhatsApp number above.
+2. Send the join code to connect to the Twilio Sandbox.
+3. Forward any suspicious:
+
+   * Text message
+   * Image or screenshot
+   * Voice note
+4. Receive an AI-generated fact-check report instantly.
+
+### Example Use Cases
+
+* Viral health claims
+* Forwarded news messages
+* Social media screenshots
+* Political claims
+* Voice notes containing suspicious information
+
+> ⚠️ **Beta Notice**
+>
+> CapDetector currently runs on the Twilio WhatsApp Sandbox and free-tier Google Gemini APIs.
+>
+> Due to API rate limits and occasional server overload on the Gemini side, responses may sometimes be delayed or temporarily unavailable. If this happens, simply resend your message after a few minutes.
+>
+> Demo availability is not guaranteed 24/7 and may be limited during periods of high usage.
+
 
 ## ✨ Features
 

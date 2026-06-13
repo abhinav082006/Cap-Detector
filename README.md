@@ -1,3 +1,4 @@
+
 # 🔍 CapDetector — AI-Powered WhatsApp Fact Checker
 
 CapDetector is a WhatsApp chatbot that helps users identify potential misinformation using **Google Gemini AI** and the **Twilio WhatsApp API**.
@@ -10,7 +11,8 @@ Simply forward a suspicious message, image, or voice note, and CapDetector analy
 
 See CapDetector in action:
 
-**▶️ Demo:** *(Add your YouTube/GitHub video link here)*
+**▶️ Demo:** *https://github.com/user-attachments/assets/7c6ae462-ec22-4c30-81c5-4b3102a2876a
+*
 
 ### What the demo covers
 
